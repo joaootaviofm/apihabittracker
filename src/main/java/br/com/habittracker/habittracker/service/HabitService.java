@@ -35,4 +35,8 @@ public class HabitService {
     public List<Habit> getAllHabits(){
         return habitRepository.findAll();
     }
+
+    public void deleteHabitById(Long id){
+        habitRepository.deleteById(id);
+    }
 }

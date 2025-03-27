@@ -42,4 +42,11 @@ public class HabitController {
         return ResponseEntity.ok(habitService.getAllHabits());
 
     }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteHabitById(@PathVariable("id") Long id){
+        habitService.deleteHabitById(id);
+        return ResponseEntity.noContent().build();
+    }
+
 }
