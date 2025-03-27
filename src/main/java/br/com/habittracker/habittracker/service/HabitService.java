@@ -6,6 +6,8 @@ import br.com.habittracker.habittracker.model.Habit;
 import br.com.habittracker.habittracker.repository.HabitRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class HabitService {
 
@@ -15,13 +17,17 @@ public class HabitService {
     }
 
     public Long createHabit(HabitDTO habitDTO){
+        var entity = new Habit(
+            null,
+            habitDTO.habit(),
+            habitDTO.description(),
+            habitDTO.isComplete());
 
-        var entity = new Habit(null,
-                habitDTO.name(),
-                habitDTO.description(),
-                habitDTO.isComplete());
         var userSaved = habitRepository.save(entity);
         return userSaved.getId();
     }
 
+    public Optional<Habit> getHabitById(Long id){
+        return habitRepository.findById(id);
+    }
 }
