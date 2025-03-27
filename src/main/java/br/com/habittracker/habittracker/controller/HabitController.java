@@ -28,10 +28,10 @@ public class HabitController {
     @GetMapping("/{id}")
     public ResponseEntity<Habit> getHabitById(@PathVariable("id") Long id){
 
-        var user = habitService.getHabitById(id);
+        var habit = habitService.getHabitById(id);
 
-        if(user.isPresent()){
-            return ResponseEntity.ok(user.get());
+        if(habit.isPresent()){
+            return ResponseEntity.ok(habit.get());
         }
         return ResponseEntity.notFound().build();
     }
