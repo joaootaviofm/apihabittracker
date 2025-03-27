@@ -21,8 +21,8 @@ public class HabitController {
     @PostMapping
     public ResponseEntity<Habit> createHabit(@RequestBody HabitDTO habitDTO){
 
-        var userId = habitService.createHabit(habitDTO);
-        return ResponseEntity.created(URI.create("/habits/"+ userId.toString())).build();
+        var habitId = habitService.createHabit(habitDTO);
+        return ResponseEntity.created(URI.create("/habits/"+ habitId.toString())).build();
     }
 
     @GetMapping("/{id}")
