@@ -6,6 +6,7 @@ import br.com.habittracker.habittracker.model.Habit;
 import br.com.habittracker.habittracker.repository.HabitRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -29,5 +30,9 @@ public class HabitService {
 
     public Optional<Habit> getHabitById(Long id){
         return habitRepository.findById(id);
+    }
+
+    public List<Habit> getAllHabits(){
+        return habitRepository.findAll();
     }
 }

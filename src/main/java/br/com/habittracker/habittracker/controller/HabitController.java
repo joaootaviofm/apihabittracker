@@ -6,6 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
+import java.util.List;
 
 @RestController
 @RequestMapping("/habits")
@@ -33,5 +34,12 @@ public class HabitController {
             return ResponseEntity.ok(user.get());
         }
         return ResponseEntity.notFound().build();
+    }
+
+    @GetMapping("/list")
+    public ResponseEntity<List<Habit>> getAllHabits(){
+
+        return ResponseEntity.ok(habitService.getAllHabits());
+
     }
 }
