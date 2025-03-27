@@ -19,9 +19,9 @@ public class HabitController {
 
 
     @PostMapping
-    public ResponseEntity<Habit> createHabit(@RequestBody HabitDTO habitDTO){
+    public ResponseEntity<Habit> createHabit(@RequestBody CreateHabitDTO createHabitDTO){
 
-        var habitId = habitService.createHabit(habitDTO);
+        var habitId = habitService.createHabit(createHabitDTO);
         return ResponseEntity.created(URI.create("/habits/"+ habitId.toString())).build();
     }
 

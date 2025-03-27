@@ -1,7 +1,7 @@
 package br.com.habittracker.habittracker.service;
 
 
-import br.com.habittracker.habittracker.controller.HabitDTO;
+import br.com.habittracker.habittracker.controller.CreateHabitDTO;
 import br.com.habittracker.habittracker.model.Habit;
 import br.com.habittracker.habittracker.repository.HabitRepository;
 import org.springframework.stereotype.Service;
@@ -17,12 +17,12 @@ public class HabitService {
         this.habitRepository = habitRepository;
     }
 
-    public Long createHabit(HabitDTO habitDTO){
+    public Long createHabit(CreateHabitDTO createHabitDTO){
         var entity = new Habit(
             null,
-            habitDTO.habit(),
-            habitDTO.description(),
-            habitDTO.isComplete());
+            createHabitDTO.habit(),
+            createHabitDTO.description(),
+            createHabitDTO.isComplete());
 
         var userSaved = habitRepository.save(entity);
         return userSaved.getId();
